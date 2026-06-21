@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="70 250 860 555" width="860" height="555">
+  <defs>
+    <style>
+      .ink { fill: none; stroke: #22324A; }
+      .inkfill { fill: #22324A; }
+      .word { font-family: 'DejaVu Sans', 'Segoe UI', Arial, sans-serif; font-weight: 700; }
+    </style>
+  </defs>
+
+  <!-- ===== Emblem (single-ink) ===== -->
+
+  <!-- main cable -->
+  <path class="ink" stroke-width="10" stroke-linecap="round"
+        d="M 274 497 C 330 466, 392 392, 400 310
+           C 440 360, 560 360, 600 310
+           C 608 392, 670 466, 726 497" />
+
+  <!-- towers -->
+  <line class="ink" stroke-width="12" stroke-linecap="round" x1="400" y1="312" x2="400" y2="505" />
+  <line class="ink" stroke-width="12" stroke-linecap="round" x1="600" y1="312" x2="600" y2="505" />
+
+  <!-- suspenders -->
+  <g class="ink" stroke-width="4">
+    <line x1="345" y1="450" x2="345" y2="502" />
+    <line x1="450" y1="356" x2="450" y2="502" />
+    <line x1="500" y1="362" x2="500" y2="502" />
+    <line x1="550" y1="356" x2="550" y2="502" />
+    <line x1="655" y1="450" x2="655" y2="502" />
+  </g>
+
+  <!-- deck / roadway -->
+  <rect class="inkfill" x="270" y="498" width="460" height="16" rx="8" />
+
+  <!-- left anchor: magnifying glass -->
+  <circle class="ink" stroke-width="18" cx="232" cy="430" r="52" />
+  <line class="ink" stroke-width="18" stroke-linecap="round" x1="196" y1="468" x2="158" y2="508" />
+
+  <!-- right anchor: MCP node (outlined hexagon + port) -->
+  <polygon class="ink" stroke-width="14" stroke-linejoin="round"
+           points="768,374 816.5,402 816.5,458 768,486 719.5,458 719.5,402" />
+  <circle class="inkfill" cx="768" cy="430" r="13" />
+
+  <!-- ===== Wordmark ===== -->
+  <text x="500" y="700" text-anchor="middle" font-size="92" class="word inkfill">SearXNG-MCP</text>
+  <text class="word" x="500" y="752" text-anchor="middle" font-size="30"
+        letter-spacing="16" fill="#22324A">BRIDGE</text>
+</svg>

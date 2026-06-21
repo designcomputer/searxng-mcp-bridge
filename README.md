@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="logos/searxng-mcp-bridge_color.png" alt="searxng-mcp-bridge" width="480">
+</p>
+
 # searxng-mcp-bridge
 
 A minimal [MCP](https://modelcontextprotocol.io/) server that exposes a private
