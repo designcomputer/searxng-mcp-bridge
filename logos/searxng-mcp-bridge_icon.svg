@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <defs>
+    <style>
+      .navy { fill: none; stroke: #22324A; }
+      .navyfill { fill: #22324A; }
+      .blue { stroke: #2E74E6; fill: none; }
+      .bluefill { fill: #2E74E6; }
+    </style>
+  </defs>
+
+  <rect width="600" height="600" fill="#FFFFFF"/>
+
+  <!-- emblem scaled to fill the square width and centered vertically -->
+  <g transform="translate(-90.4,-29.9) scale(0.808)">
+    <!-- main cable -->
+    <path class="navy" stroke-width="10" stroke-linecap="round"
+          d="M 274 497 C 330 466, 392 392, 400 310
+             C 440 360, 560 360, 600 310
+             C 608 392, 670 466, 726 497" />
+    <!-- towers -->
+    <line class="navy" stroke-width="12" stroke-linecap="round" x1="400" y1="312" x2="400" y2="505" />
+    <line class="navy" stroke-width="12" stroke-linecap="round" x1="600" y1="312" x2="600" y2="505" />
+    <!-- suspenders -->
+    <g class="navy" stroke-width="4">
+      <line x1="345" y1="450" x2="345" y2="502" />
+      <line x1="450" y1="356" x2="450" y2="502" />
+      <line x1="500" y1="362" x2="500" y2="502" />
+      <line x1="550" y1="356" x2="550" y2="502" />
+      <line x1="655" y1="450" x2="655" y2="502" />
+    </g>
+    <!-- deck -->
+    <rect class="navyfill" x="270" y="498" width="460" height="16" rx="8" />
+    <!-- magnifier (search) -->
+    <circle class="blue" stroke-width="18" cx="232" cy="430" r="52" />
+    <line class="blue" stroke-width="18" stroke-linecap="round" x1="196" y1="468" x2="158" y2="508" />
+    <!-- MCP node -->
+    <polygon class="bluefill" points="768,374 816.5,402 816.5,458 768,486 719.5,458 719.5,402" />
+    <circle fill="#FFFFFF" cx="768" cy="430" r="15" />
+  </g>
+</svg>
