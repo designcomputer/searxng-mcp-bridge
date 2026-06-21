@@ -9,6 +9,26 @@ speaks streamable-HTTP / SSE).
 It is deliberately tiny — one file, two dependencies (`fastmcp`, `httpx`) — as an
 auditable alternative to heavier SearXNG MCP packages.
 
+## Why this exists
+
+There are existing SearXNG MCP servers, so why another one? Two reasons specific
+to this use case:
+
+- **Transport.** The llama.cpp WebUI is a browser-based MCP client, so it can
+  only talk to MCP servers over a network transport (streamable-HTTP / SSE /
+  WebSocket) — not stdio. Many published SearXNG MCP servers are stdio-first
+  (aimed at Claude Desktop / IDEs), which doesn't fit here.
+- **Footprint.** This service runs unauthenticated on the local network, so its
+  dependency and supply-chain surface matters. The most prominent PyPI option
+  (`searxng-mcp`) pulls in **~167 transitive packages** — including `litellm`,
+  `llama-index-core`, `confluent-kafka`, and a number of the author's own
+  utility packages — for what is ultimately a thin wrapper around one HTTP
+  endpoint. That's a lot of unrelated code to trust and keep updated.
+
+Since the actual job is trivial (forward a query to SearXNG's JSON API and return
+the results), a single readable file with two well-known dependencies is easier
+to audit, deploy, and reason about than adopting a large general-purpose package.
+
 ## How it works
 
 ```
