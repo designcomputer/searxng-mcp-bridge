@@ -1,0 +1,23 @@
+[Unit]
+Description=SearXNG MCP bridge (streamable-HTTP) for llama.cpp WebUI
+Documentation=https://github.com/searxng/searxng
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+# install.sh rewrites User/Group to the installing user. If you enable this
+# unit directly, set these to an existing non-root account.
+User=searxng-mcp
+Group=searxng-mcp
+WorkingDirectory=/opt/searxng-mcp
+Environment=SEARXNG_URL=http://127.0.0.1:4000
+Environment=HOST=0.0.0.0
+Environment=PORT=8000
+Environment=MCP_PATH=/mcp
+ExecStart=/opt/searxng-mcp/.venv/bin/python /opt/searxng-mcp/server.py
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
