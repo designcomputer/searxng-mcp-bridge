@@ -130,6 +130,17 @@ client that supports that transport. Confirmed working with:
 
 Tested another client? PRs adding it to this list are welcome.
 
+## Screenshots
+
+**llama.cpp WebUI** — the bridge added under *MCP Servers* with the *Use
+llama-server proxy* switch enabled (see the CORS-proxy note above):
+
+![llama.cpp WebUI MCP configuration](docs/screenshots/llama-cpp-webui-mcp.png)
+
+**Page Assist** — the bridge registered as an HTTP MCP server:
+
+![Page Assist MCP configuration](docs/screenshots/page-assist-mcp.png)
+
 ## Security note
 
 Binding `HOST=0.0.0.0` exposes an unauthenticated search endpoint on every
