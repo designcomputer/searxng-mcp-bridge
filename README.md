@@ -92,6 +92,32 @@ SEARXNG_URL=http://127.0.0.1:4000 .venv/bin/python server.py
 In **WebUI → MCP Servers**, add a server with transport **Streamable HTTP** and
 URL `http://<host>:8000/mcp`. Use a tool-capable model served with `--jinja`.
 
+### Accessing the WebUI from another machine (CORS proxy)
+
+If you open the llama.cpp WebUI from a **different computer** on your LAN/VPN
+(i.e. not via `localhost`), the browser blocks the WebUI's direct connection to
+the MCP server because it's a different origin (CORS). The fix is to route MCP
+traffic through llama-server's built-in CORS proxy:
+
+1. Start `llama-server` with the proxy enabled (experimental — only on a trusted
+   network; it lets the server make outbound requests on the client's behalf):
+
+   ```bash
+   llama-server ... --ui-mcp-proxy
+   # (-ag / --agent also enables it, plus all built-in server tools)
+   ```
+
+2. In the WebUI, add the MCP server as above and let it connect. The first
+   attempt **will fail** from a remote browser — this is expected.
+
+3. Open that server's settings and enable the **"Use llama-server proxy"**
+   switch, then reconnect. (The switch is greyed out with a hint to pass
+   `--ui-mcp-proxy` if the server wasn't started with the flag, and it only
+   becomes relevant once a direct connection has failed.)
+
+When the WebUI is opened on the same machine via `localhost`, the proxy isn't
+needed.
+
 ## Tested clients
 
 The bridge speaks standard MCP over streamable-HTTP, so it should work with any
