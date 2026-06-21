@@ -92,6 +92,18 @@ SEARXNG_URL=http://127.0.0.1:4000 .venv/bin/python server.py
 In **WebUI → MCP Servers**, add a server with transport **Streamable HTTP** and
 URL `http://<host>:8000/mcp`. Use a tool-capable model served with `--jinja`.
 
+## Tested clients
+
+The bridge speaks standard MCP over streamable-HTTP, so it should work with any
+client that supports that transport. Confirmed working with:
+
+- **llama.cpp WebUI** — add it under *MCP Servers* as a Streamable HTTP server at
+  `http://<host>:8000/mcp` (see above).
+- **[Page Assist](https://github.com/n4ze3m/page-assist)** (browser extension) —
+  works well; add it as a streamable-HTTP MCP server pointing at the same URL.
+
+Tested another client? PRs adding it to this list are welcome.
+
 ## Security note
 
 Binding `HOST=0.0.0.0` exposes an unauthenticated search endpoint on every
