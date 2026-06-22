@@ -13,6 +13,13 @@ speaks streamable-HTTP / SSE).
 It is deliberately tiny — one file, two dependencies (`fastmcp`, `httpx`) — as an
 auditable alternative to heavier SearXNG MCP packages.
 
+> [!WARNING]
+> **Built for local networks or VPNs — not public internet exposure.** This
+> bridge serves an **unauthenticated** search endpoint. Run it on a trusted LAN
+> or VPN only; do not bind it to a public interface, port-forward it, or place it
+> on an internet-facing host. The same applies to the SearXNG instance behind it
+> and to llama-server's experimental `--ui-mcp-proxy`.
+
 ## Why this exists
 
 There are existing SearXNG MCP servers, so why another one? Two reasons specific
@@ -147,9 +154,19 @@ llama-server proxy* switch enabled (see the CORS-proxy note above):
 
 ## Security note
 
-Binding `HOST=0.0.0.0` exposes an unauthenticated search endpoint on every
-reachable network (LAN/VPN). Use `127.0.0.1` if you only need local access, or
-restrict at the firewall.
+**This is designed for local networks or VPNs, not public internet exposure.**
+
+The bridge has **no authentication** — anyone who can reach its port can run
+searches through your SearXNG instance. Binding `HOST=0.0.0.0` (the default)
+exposes it on *every* reachable network interface, including your LAN and VPN.
+
+- Keep it on a **trusted network**. Do **not** put it on a public/internet-facing
+  host, port-forward it, or expose it through a reverse proxy without your own
+  authentication in front.
+- Use `HOST=127.0.0.1` if you only need local (same-machine) access.
+- Otherwise restrict access at the firewall to the specific hosts that need it.
+- `llama-server`'s `--ui-mcp-proxy` is experimental and similarly assumes a
+  trusted network — enable it only there.
 
 ## License
 
